@@ -50,8 +50,6 @@ jeszcze dzia³a; podstawowe kodowanie DVD do DivX wydaje siê dzia³aæ.
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-gzip -9nf AUTHORS ChangeLog INSTALL NEWS README TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT;
 
@@ -60,7 +58,7 @@ rm -rf $RPM_BUILD_ROOT;
 
 %files
 %defattr(644,root,root,755)
-%doc *.gz
+%doc AUTHORS ChangeLog INSTALL NEWS README TODO
 %attr(755,root,root) %{_bindir}/drip
 %attr(755,root,root) %{_bindir}/dripencoder
 %attr(755,root,root) %{_bindir}/gnomedrip
