@@ -15,8 +15,6 @@ BuildRequires:	libdvdcss-devel >= 1.0.0
 BuildRequires:	libdvdread-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		_prefix		/usr/X11R6
-%define		_mandir		%{_prefix}/man
 
 %description
 You'll need DeCSS for handling of the DVD MPEG-2 streams, and avifile
