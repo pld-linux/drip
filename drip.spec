@@ -10,6 +10,7 @@ Source0:	http://drip.sourceforge.net/files/%{name}-%{version}-RC1.tar.gz
 URL:		http://drip.sourceforge.net/
 BuildRequires:	ImageMagick-devel
 BuildRequires:	ORBit-devel
+BuildRequires:	SDL-devel
 BuildRequires:	a52dec-libs-devel >= 0.7.4
 BuildRequires:	avifile-devel >= 0.7.22
 BuildRequires:	esound-devel
@@ -21,6 +22,7 @@ BuildRequires:	lame-libs-devel
 BuildRequires:	libdvdcss-devel >= 1.2.2
 BuildRequires:	libdvdread-devel >= 0.9.3
 BuildRequires:	libxml2-devel
+BuildRequires:	libstdc++-devel
 BuildRequires:	mpeg2dec-devel >= 0.3.1
 Requires:	avifile >= 0.7.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
