@@ -36,8 +36,7 @@ drip nie jest jeszcze skonczonym projektem.
 %setup -q
 
 %build
-CFLAGS="%{rpmcflags}" ./configure --prefix=%{_prefix} --mandir=%{_mandir} --with-gnome=/usr/X11R6
-
+%configure2_13 --prefix=%{_prefix} --mandir=%{_mandir} --with-gnome=/usr/X11R6
 %{__make}
 
 %install
