@@ -49,16 +49,16 @@ rm -rf $RPM_BUILD_ROOT
 /sbin/ldconfig -n $RPM_BUILD_ROOT
 
 #find $RPM_BUILD_ROOT -type f -o -type l |sed -e "s|$RPM_BUILD_ROOT||g" > filelist
-
+gzip -9nf AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %clean
 [ "$RPM_BUILD_ROOT" = "/var/tmp/%{name}-%{version}-%{release}" ] && rm -rf $RPM_BUILD_ROOT;
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
-%{_prefix}/bin/drip
-%{_prefix}/bin/dripencoder
-%{_prefix}/bin/gnomedrip
+%doc *.gz
+%attr(755,root,root) %{_prefix}/bin/drip
+%attr(755,root,root) %{_prefix}/bin/dripencoder
+%attr(755,root,root) %{_prefix}/bin/gnomedrip
 %{_prefix}/lib/libdripspu.a
 %{_prefix}/lib/libdripspu.la
 %{_prefix}/lib/libdripspu.so
