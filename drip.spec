@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		X11/Applications/Multimedia
 Source0:	http://drip.sourceforge.net/files/%{name}-%{version}.tar.gz
+# Source0-md5:	b88e9731f7266f0e0b9ff412c13a3624
 URL:		http://drip.sourceforge.net/
 BuildRequires:	ORBit-devel
 BuildRequires:	avifile-devel >= 0.6.0
