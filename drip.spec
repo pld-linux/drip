@@ -64,7 +64,7 @@ rm -rf $RPM_BUILD_ROOT;
 %attr(755,root,root) %{_bindir}/drip
 %attr(755,root,root) %{_bindir}/dripencoder
 %attr(755,root,root) %{_bindir}/gnomedrip
-%attr(755,root,root) %{_libdir}/libdripspu.la
+%{_libdir}/libdripspu.la
 %attr(755,root,root) %{_libdir}/libdripspu.so.0.1.0
 %dir %{_datadir}/gnome/help/drip
 %dir %{_datadir}/gnome/help/drip/C
