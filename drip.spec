@@ -49,7 +49,6 @@ jeszcze dzia³a; podstawowe kodowanie DVD do DivX wydaje siê dzia³aæ.
 
 %build
 %configure
-
 %{__make}
 
 %install
