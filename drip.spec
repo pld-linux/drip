@@ -1,21 +1,29 @@
 Summary:	DVD to DivX-Encoder
 Summary(pl):    Koder formatu DVD do DivX
 Name:		drip
-Version:	0.8.1
-Release:	1
+Version:	0.9.0
+Release:	0.RC1.1
 License:	GPL
 Group:		X11/Applications/Multimedia
-Source0:	http://drip.sourceforge.net/files/%{name}-%{version}.tar.gz
-# Source0-md5:	b88e9731f7266f0e0b9ff412c13a3624
+Source0:	http://drip.sourceforge.net/files/%{name}-%{version}-RC1.tar.gz
+# Source0-md5:	1bc27dbb4080da18e6153253a5087156
 URL:		http://drip.sourceforge.net/
+BuildRequires:	ImageMagick-devel
 BuildRequires:	ORBit-devel
-BuildRequires:	avifile-devel >= 0.6.0
+BuildRequires:	a52dec-libs-devel >= 0.7.4
+BuildRequires:	avifile-devel >= 0.7.22
+BuildRequires:	esound-devel
+BuildRequires:	gcc-c++ >= 3.0.0
+BuildRequires:	gdk-pixbuf-devel
+BuildRequires:	gnome-libs-devel
 BuildRequires:	gtk+-devel
 BuildRequires:	lame-libs-devel
-BuildRequires:	libdvdcss-devel >= 1.0.0
-BuildRequires:	libdvdread-devel
+BuildRequires:	libdvdcss-devel >= 1.2.2
+BuildRequires:	libdvdread-devel >= 0.9.3
+BuildRequires:	libxml2-devel
+BuildRequires:	mpeg2dec-devel >= 0.3.1
+Requires:	avifile >= 0.7.22
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-
 
 %description
 You'll need DeCSS for handling of the DVD MPEG-2 streams, and avifile
@@ -37,38 +45,37 @@ Uwaga: Drip jeszcze nie jest skoñczony, ma b³êdy i nie wszystko
 jeszcze dzia³a; podstawowe kodowanie DVD do DivX wydaje siê dzia³aæ.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}-RC1
 
 %build
-%configure2_13 \
-	--with-gnome=/usr/X11R6
+%configure
 
 %{__make}
 
 %install
+rm -rf $RPM_BUILD_ROOT
 
-%{__make} DESTDIR=$RPM_BUILD_ROOT install
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+# no static plugins, *.la shouldn't be needed (libgmodule used)
+rm -f $RPM_BUILD_ROOT%{_libdir}/lib*.{la,a}
+
+%find_lang %{name} --with-gnome
 
 %clean
-rm -rf $RPM_BUILD_ROOT;
+rm -rf $RPM_BUILD_ROOT
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig  
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog INSTALL NEWS README TODO
+%doc AUTHORS BUG* ChangeLog README TODO
 %attr(755,root,root) %{_bindir}/drip
 %attr(755,root,root) %{_bindir}/dripencoder
 %attr(755,root,root) %{_bindir}/gnomedrip
-%{_libdir}/libdripspu.la
-%attr(755,root,root) %{_libdir}/libdripspu.so.0.1.0
-%dir %{_datadir}/gnome/help/drip
-%dir %{_datadir}/gnome/help/drip/C
-%dir %{_datadir}/gnome/help/drip/C/digs
-%{_datadir}/gnome/help/drip/C/figs/drip.png
-%{_datadir}/gnome/help/drip/C/index.html
-%{_datadir}/gnome/help/drip/C/topic.dat
-%dir %{_pixmapsdir}/drip
-%{_pixmapsdir}/drip/drip.png
-%{_pixmapsdir}/drip/drip_logo.jpg
+%attr(755,root,root) %{_libdir}/libdripspu.so.*.*.*
+%attr(755,root,root) %{_libdir}/libdrip_*filter.so.*.*.*
+%attr(755,root,root) %{_libdir}/libdrip_*filter.so
+%{_pixmapsdir}/drip
