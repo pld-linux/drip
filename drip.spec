@@ -7,8 +7,8 @@ Group:		X11/Applications/Multimedia
 Source0:	%{name}-%{version}.tar.gz
 URL:		http://drip.sourceforge.net
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
-Requires:	avifile >= 0.6.0 libdvdcss >= 1.0.0 libdvdread orbitcpp lame
-Buildrequires:	libdvdcss >= 1.0.0 avifile >= 0.6.0 gtk+-devel ORBit-devel orbitcpp lame
+Requires:	avifile >= 0.6.0 libdvdcss >= 1.0.0 libdvdread lame
+Buildrequires:	libdvdread-devel libdvdcss >= 1.0.0 avifile >= 0.6.0 avifile-devel gtk+-devel ORBit-devel  lame
 
 %define		_prefix		/usr/X11R6
 %define		_mandir		%{_prefix}/man
@@ -22,6 +22,14 @@ linux 2.4. Good luck backing up your stuff.
 
 Drip is not yet finished, it has bugs and not all of the features are
 implemented. Basic dvd to divx ripping seems to work.
+
+%description -l pl
+Bedziesz potrzebowal decss(?) dla obslugi strumienia DVD mpeg2
+i kodowania avifile dla divx;-). Nie zapomnij 
+zainstalowac windowsowych plikow dll dla avifile.
+drip nie jest jeszcze skonczony . zawiera "bugi" i nie wszystkie cechy 
+sa wykonane
+
 
 %prep
 
@@ -56,9 +64,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_prefix}/lib/libdripspu.so
 %{_prefix}/lib/libdripspu.so.0
 %{_prefix}/lib/libdripspu.so.0.1.0
-%{_prefix}/help/drip/C/figs/drip.png
-%{_prefix}/help/drip/C/index.html
-%{_prefix}/help/drip/C/topic.dat
+%{_prefix}/share/gnome/help/drip/C/figs/drip.png
+%{_prefix}/share/gnome/help/drip/C/index.html
+%{_prefix}/share/gnome/help/drip/C/topic.dat
 %{_prefix}/share/pixmaps/drip/drip.png
 %{_prefix}/share/pixmaps/drip/drip_logo.jpg
-%{_prefix}/share/pixmaps/drip/phosphor-persistence.gif
+#%{_prefix}/share/pixmaps/drip/phosphor-persistence.gif
