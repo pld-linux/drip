@@ -1,4 +1,5 @@
 Summary:	DVD to Div/X-Encoder
+Summary(pl):    dekoder formatu dvd do divx
 Name:		drip
 Version:	0.8.1
 Release:	1
@@ -24,11 +25,10 @@ Drip is not yet finished, it has bugs and not all of the features are
 implemented. Basic dvd to divx ripping seems to work.
 
 %description -l pl
-Bedziesz potrzebowal decss(?) dla obslugi strumienia DVD mpeg2
-i kodowania avifile dla divx;-). Nie zapomnij 
-zainstalowac windowsowych plikow dll dla avifile.
-drip nie jest jeszcze skonczony . zawiera "bugi" i nie wszystkie cechy 
-sa wykonane
+Bedziesz potrzebowal biblioteki do odkodowania DVD-Video 
+dla obslugi strumienia DVD mpeg2 i kodowania avifile dla divx;-).
+Nie zapomnij zainstalowac windowsowych plikow dla dla avifile.
+drip nie jest jeszcze skonczonym projektem.
 
 
 %prep
@@ -36,22 +36,21 @@ sa wykonane
 %setup -q
 
 %build
-CFLAGS="%{rpmcflags}" ./configure --prefix=%{_prefix} --mandir=%{mandir} --with-gnome=/usr/X11R6
+CFLAGS="%{rpmcflags}" ./configure --prefix=%{_prefix} --mandir=%{_mandir} --with-gnome=/usr/X11R6
 
 %{__make}
 
 %install
-rm -rf $RPM_BUILD_ROOT
-[ "$RPM_BUILD_ROOT" = "/var/tmp/%{name}-%{version}-%{release}" ] && rm -rf $RPM_BUILD_ROOT;
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-/sbin/ldconfig -n $RPM_BUILD_ROOT
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig  
 
-#find $RPM_BUILD_ROOT -type f -o -type l |sed -e "s|$RPM_BUILD_ROOT||g" > filelist
+
 gzip -9nf AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %clean
-[ "$RPM_BUILD_ROOT" = "/var/tmp/%{name}-%{version}-%{release}" ] && rm -rf $RPM_BUILD_ROOT;
+rm -rf $RPM_BUILD_ROOT;
 
 %files
 %defattr(644,root,root,755)
@@ -59,14 +58,13 @@ gzip -9nf AUTHORS COPYING ChangeLog INSTALL NEWS README TODO
 %attr(755,root,root) %{_prefix}/bin/drip
 %attr(755,root,root) %{_prefix}/bin/dripencoder
 %attr(755,root,root) %{_prefix}/bin/gnomedrip
-%{_prefix}/lib/libdripspu.a
-%{_prefix}/lib/libdripspu.la
-%{_prefix}/lib/libdripspu.so
-%{_prefix}/lib/libdripspu.so.0
-%{_prefix}/lib/libdripspu.so.0.1.0
-%{_prefix}/share/gnome/help/drip/C/figs/drip.png
-%{_prefix}/share/gnome/help/drip/C/index.html
-%{_prefix}/share/gnome/help/drip/C/topic.dat
-%{_prefix}/share/pixmaps/drip/drip.png
-%{_prefix}/share/pixmaps/drip/drip_logo.jpg
-#%{_prefix}/share/pixmaps/drip/phosphor-persistence.gif
+%attr(755,root,root) %{_prefix}/lib/libdripspu.a
+%attr(755,root,root) %{_prefix}/lib/libdripspu.la
+%attr(755,root,root) %{_prefix}/lib/libdripspu.so
+%attr(755,root,root) %{_prefix}/lib/libdripspu.so.0
+%attr(755,root,root) %{_prefix}/lib/libdripspu.so.0.1.0
+%attr(755,root,root) %{_prefix}/share/gnome/help/drip/C/figs/drip.png
+%attr(644,root,root)%{_prefix}/share/gnome/help/drip/C/index.html
+%attr(644,root,root)%{_prefix}/share/gnome/help/drip/C/topic.dat
+%attr(644,root,root)%{_prefix}/share/pixmaps/drip/drip.png
+%attr(644,root,root)%{_prefix}/share/pixmaps/drip/drip_logo.jpg
