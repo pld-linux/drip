@@ -2,11 +2,11 @@ Summary:	DVD to DivX-Encoder
 Summary(pl):	Koder formatu DVD do DivX
 Name:		drip
 Version:	0.9.0
-Release:	0.RC1.1
+Release:	0.rc3.1
 License:	GPL
 Group:		X11/Applications/Multimedia
-Source0:	http://drip.sourceforge.net/files/%{name}-%{version}-RC1.tar.gz
-# Source0-md5:	1bc27dbb4080da18e6153253a5087156
+Source0:	http://drip.sourceforge.net/files/%{name}-%{version}rc3.tar.gz
+# Source0-md5:	0248e8e3cf788d2e3f6883fdc989381e
 URL:		http://drip.sourceforge.net/
 BuildRequires:	ImageMagick-devel
 BuildRequires:	ORBit-devel
@@ -46,7 +46,7 @@ Uwaga: Drip jeszcze nie jest skoñczony, ma b³êdy i nie wszystko
 jeszcze dzia³a; podstawowe kodowanie DVD do DivX wydaje siê dzia³aæ.
 
 %prep
-%setup -q -n %{name}-%{version}-RC1
+%setup -q -n %{name}-%{version}rc3
 
 %build
 %configure
