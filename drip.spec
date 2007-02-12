@@ -1,5 +1,5 @@
 Summary:	DVD to DivX-Encoder
-Summary(pl):	Koder formatu DVD do DivX
+Summary(pl.UTF-8):   Koder formatu DVD do DivX
 Name:		drip
 Version:	0.9.0
 %define		_rc	rc3
@@ -37,14 +37,14 @@ Linux 2.4. Good luck backing up your stuff.
 Drip is not yet finished, it has bugs and not all of the features are
 implemented. Basic DVD to DivX ripping seems to work.
 
-%description -l pl
-Drip u¿ywa DeCSS do obs³ugi strumieni DVD MPEG-2 oraz avifile do
-kodowania DivX ;-). Potrzebuje plików DLL z Windows dla avifile.
-Do obs³ugi p³yt DVD trzeba mieæ wsparcie w systemie (np. Linuksie
+%description -l pl.UTF-8
+Drip uÅ¼ywa DeCSS do obsÅ‚ugi strumieni DVD MPEG-2 oraz avifile do
+kodowania DivX ;-). Potrzebuje plikÃ³w DLL z Windows dla avifile.
+Do obsÅ‚ugi pÅ‚yt DVD trzeba mieÄ‡ wsparcie w systemie (np. Linuksie
 2.4).
 
-Uwaga: Drip jeszcze nie jest skoñczony, ma b³êdy i nie wszystko
-jeszcze dzia³a; podstawowe kodowanie DVD do DivX wydaje siê dzia³aæ.
+Uwaga: Drip jeszcze nie jest skoÅ„czony, ma bÅ‚Ä™dy i nie wszystko
+jeszcze dziaÅ‚a; podstawowe kodowanie DVD do DivX wydaje siÄ™ dziaÅ‚aÄ‡.
 
 %prep
 %setup -q -n %{name}-%{version}%{_rc}
