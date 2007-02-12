@@ -1,5 +1,5 @@
 Summary:	DVD to DivX-Encoder
-Summary(pl.UTF-8):   Koder formatu DVD do DivX
+Summary(pl.UTF-8):	Koder formatu DVD do DivX
 Name:		drip
 Version:	0.9.0
 %define		_rc	rc3
